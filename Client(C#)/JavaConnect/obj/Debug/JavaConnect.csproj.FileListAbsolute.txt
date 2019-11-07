@@ -1,0 +1,15 @@
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\bin\Debug\JavaConnect.exe.config
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\bin\Debug\JavaConnect.exe
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\bin\Debug\JavaConnect.pdb
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect.csprojAssemblyReference.cache
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\MainWindow.g.cs
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\App.g.cs
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect_MarkupCompile.cache
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect_MarkupCompile.lref
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\MainWindow.baml
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect.g.resources
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect.Properties.Resources.resources
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect.csproj.GenerateResource.cache
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect.csproj.CoreCompileInputs.cache
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect.exe
+C:\Users\damin\source\repos\JavaConnect\JavaConnect\obj\Debug\JavaConnect.pdb
