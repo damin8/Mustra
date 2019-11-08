@@ -119,15 +119,11 @@ public class MusicModel {
 			newInst.setValue(2,h);
 			newInst.setValue(3,w);
 //				newInst.setValue(0, 0.0d); 기존 Instance로 세팅하고, setValue를 통해 newInstance로 바꿔준다 + for문 안써도 돼
-			for (int j = 0; j < newInst.numAttributes()-1; j++) {
-				System.out.println(j + " : " + newInst.value(j));
-			}
 			System.out.println("newInst = " + newInst);
-
 			double predNB = weatherOneR.classifyInstance(newInst);
 			predString = testDataset.classAttribute().value((int) predNB);
 			System.out.println("Predict = " + predString);
-			SendData.getSendData().Send(predString);
+			SendData.getSendData().Send(predString + "/");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

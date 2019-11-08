@@ -2,6 +2,7 @@ package SocketServer;
 
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -22,8 +23,9 @@ public class SendData {
 	}
 	public void Send(String data) {
 		try {
-		OutputStream output_data = sendSocket.getOutputStream();
+		DataOutputStream output_data = new DataOutputStream(sendSocket.getOutputStream());
 		output_data.write(data.getBytes());
+		System.out.println("send complete");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
