@@ -1,0 +1,22 @@
+﻿<Application x:Class="Mustra.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Mustra"
+             StartupUri="MainWindow.xaml">
+	<Application.Resources>
+		<ResourceDictionary 
+            xmlns:local="clr-namespace:Mustra"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+            xmlns:uc="clr-namespace:Mustra.View"
+           xmlns:vm="clr-namespace:Mustra.ViewModel"
+            >
+
+			<ResourceDictionary.MergedDictionaries>
+			</ResourceDictionary.MergedDictionaries>
+			<DataTemplate DataType="{x:Type vm:PredictUserControlViewModel}">
+				<uc:PredictUserContorl></uc:PredictUserContorl>
+			</DataTemplate>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>
