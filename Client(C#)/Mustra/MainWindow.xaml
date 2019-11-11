@@ -214,7 +214,7 @@
 											<Border.Effect>
 												<DropShadowEffect Color="#FFCDCDCD"/>
 											</Border.Effect>
-											<TextBlock><Hyperlink TextDecorations="{x:Null}"><InlineUIContainer>
+                                            <TextBlock><Hyperlink Command="{Binding Predict}" TextDecorations="{x:Null}"><InlineUIContainer>
 											<StackPanel Width="341" Height="47">
 												<TextBlock
 													Text="Predict" FontSize="22" TextAlignment="Center" FontFamily="Haettenschweiler" 

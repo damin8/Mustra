@@ -100,22 +100,22 @@ namespace Mustra.ViewModel
 
         public MainWindowViewModel()
         {
-            MS = new MustraSock();
             this.ContentView = null;
             this.LoadPredictPage = new Command(loadPredictPage,CE);
             _predictUserControlViewModel = new PredictUserControlViewModel();
             Predict = new Command(goPredict, CE);
+            MS = new MustraSock();
         }
 
         public void goPredict(object obj)
         {
             string[] attribute = new string[6];
-            attribute[0] = Algo;
-            attribute[1] = Gsr;
-            attribute[2] = Amg;
-            attribute[3] = Mgs;
-            attribute[4] = Afn;
-            attribute[5] = Mv;
+            attribute[0] = "OneR";
+            attribute[1] = Gsr.ToString();
+            attribute[2] = Amg.ToString();
+            attribute[3] = Mgs.ToString();
+            attribute[4] = Afn.ToString();
+            attribute[5] = Mv.ToString();
             MS.SendData(attribute);
         }
 

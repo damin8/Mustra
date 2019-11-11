@@ -15,7 +15,7 @@ namespace Mustra.ViewModel
 {
     class MustraSock
     {
-        private bool nowconnect = false;
+        public bool nowconnect = false;
         private Socket client = null;
 
         public class AsyncObject
@@ -35,6 +35,10 @@ namespace Mustra.ViewModel
             }
         }
 
+        public void CloseSock()
+        {
+            client.Close();
+        }
         public MustraSock()
         {
             try
@@ -42,15 +46,15 @@ namespace Mustra.ViewModel
                 client = new Socket(AddressFamily.InterNetwork,
                     SocketType.Stream, ProtocolType.IP);
 
-                //string address = "203.229.204.163";
+                string address = "203.229.204.168";
                 //string address = "203.229.204.173";
-                string address = "172.30.1.32";
+                //string address = "172.30.1.32";
                 client.Connect(address, 8888);
                 MessageBox.Show("연결 성공!");
                 AsyncObject ao = new AsyncObject(4096);
                 ao.WorkingSocket = client;
                 nowconnect = true;
-                ao.WorkingSocket.BeginReceive(ao.Buffer, 0, 4096, 0, DataReceived, ao);
+                //ao.WorkingSocket.BeginReceive(ao.Buffer, 0, 4096, 0, DataReceived, ao);
             }
             catch (Exception e)
             {
@@ -59,7 +63,7 @@ namespace Mustra.ViewModel
             }
         }
 
-        public void DataReceived(IAsyncResult ar)
+        /*public void DataReceived(IAsyncResult ar)
         {
             AsyncObject obj = (AsyncObject)ar.AsyncState;
             try
@@ -72,28 +76,45 @@ namespace Mustra.ViewModel
                 MessageBox.Show(tokens[2]);
                 // 수신 받은거 처리 후
                 obj.ClearBuffer();
-                obj.WorkingSocket.BeginReceive(obj.Buffer, 0, 4096, SocketFlags.None, DataReceived, obj);
+                //obj.WorkingSocket.BeginReceive(obj.Buffer, 0, 4096, SocketFlags.None, DataReceived, obj);
+                obj.WorkingSocket.Receive(obj.Buffer);
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
 
             }
-        }
+        }*/
 
         public void SendData(string[] attribute)
         {
-            AsyncObject ao = new AsyncObject(4096);
-            ao.WorkingSocket = client;
-            int size = attribute.Length;
-            string Data = "";
-            for (int i = 0; i < size; i++)
+            try
             {
-                Data += attribute[i];
-                Data += "/";
+                AsyncObject ao = new AsyncObject(4096);
+                ao.WorkingSocket = client;
+                int size = attribute.Length;
+                string Data = "";
+                for (int i = 0; i < size; i++)
+                {
+                    Data += attribute[i];
+                    Data += "/";
+                }
+                byte[] bD = Encoding.UTF8.GetBytes(Data + "\r\n");
+                ao.WorkingSocket.Send(bD);
+                ao.WorkingSocket.Receive(ao.Buffer);
+                string text = Encoding.UTF8.GetString(ao.Buffer);
+                string[] tokens = text.Split('~');
+                if (tokens.Length == 1) return;
+                MessageBox.Show(tokens[0]);
+                MessageBox.Show(tokens[1]);
+                MessageBox.Show(tokens[2]);
+                // 수신 받은거 처리 후
+                ao.ClearBuffer();
             }
-            byte[] bD = Encoding.UTF8.GetBytes(Data + "\r\n");
-            ao.WorkingSocket.Send(bD);
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
     }
 }
