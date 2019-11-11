@@ -44,7 +44,7 @@ namespace JavaTest
 
                 //string address = "203.229.204.163";
                 //string address = "203.229.204.173";
-                string address = "172.30.1.40";
+                string address = "172.30.1.32";
                 client.Connect(address, 8888);
                 MessageBox.Show("연결 성공!");
                 AsyncObject ao = new AsyncObject(4096);
@@ -65,9 +65,11 @@ namespace JavaTest
             try
             {
                 string text = Encoding.UTF8.GetString(obj.Buffer);
-                string[] tokens = text.Split('/');
+                string[] tokens = text.Split('~');
                 if (tokens.Length == 1) return;
                 MessageBox.Show(tokens[0]);
+                MessageBox.Show(tokens[1]);
+                MessageBox.Show(tokens[2]);
                 // 수신 받은거 처리 후
                 obj.ClearBuffer();
                 obj.WorkingSocket.BeginReceive(obj.Buffer, 0, 4096, SocketFlags.None, DataReceived, obj);

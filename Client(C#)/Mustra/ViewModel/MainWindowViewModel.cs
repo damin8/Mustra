@@ -110,7 +110,7 @@ namespace Mustra.ViewModel
         public void goPredict(object obj)
         {
             string[] attribute = new string[6];
-            attribute[0] = "OneR";
+            attribute[0] = "Tree";
             attribute[1] = Gsr.ToString();
             attribute[2] = Amg.ToString();
             attribute[3] = Mgs.ToString();

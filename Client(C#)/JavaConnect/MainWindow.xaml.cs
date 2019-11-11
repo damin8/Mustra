@@ -29,11 +29,13 @@ namespace JavaConnect
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] attribute = new string[4];
-            attribute[0] = textBox.Text.ToString();
-            attribute[1] = textBox1.Text.ToString();
-            attribute[2] = textBox2.Text.ToString();
-            attribute[3] = textBox3.Text.ToString();
+            string[] attribute = new string[6];
+            attribute[0] = textBox1.Text.ToString();
+            attribute[1] = textBox2.Text.ToString();
+            attribute[2] = textBox3.Text.ToString();
+            attribute[3] = textBox4.Text.ToString();
+            attribute[4] = textBox5.Text.ToString();
+            attribute[5] = textBox6.Text.ToString();
             socket.SendData(attribute);
             MessageBox.Show("전송 완료!");
         }

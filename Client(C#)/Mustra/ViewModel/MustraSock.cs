@@ -46,10 +46,11 @@ namespace Mustra.ViewModel
                 client = new Socket(AddressFamily.InterNetwork,
                     SocketType.Stream, ProtocolType.IP);
 
-                string address = "203.229.204.168";
+                //string address = "203.229.204.168";
                 //string address = "203.229.204.173";
                 //string address = "172.30.1.32";
-                client.Connect(address, 8888);
+                string address = "10.2.0.32";
+                client.Connect(address, 7777);
                 MessageBox.Show("연결 성공!");
                 AsyncObject ao = new AsyncObject(4096);
                 ao.WorkingSocket = client;

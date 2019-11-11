@@ -39,7 +39,8 @@ public class ReceiveThread extends Thread{
 						System.out.print(tokens[i] + " ");
 					}
 					System.out.println();
-					MusicModel.getMusicModel().Test(tokens[0], tokens[1], tokens[2], tokens[3]);
+					MusicModel.getMusicModel().Test(tokens[0],Double.parseDouble(tokens[1]), Double.parseDouble(tokens[2]), 
+							Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]), tokens[5]);
 				}
 			}
 		}
