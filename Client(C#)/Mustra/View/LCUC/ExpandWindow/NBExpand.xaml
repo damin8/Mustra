@@ -1,0 +1,20 @@
+﻿<Window x:Class="Mustra.View.LCUC.ExpandWindow.NBExpand"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mustra.View.LCUC.ExpandWindow"
+        mc:Ignorable="d"
+        Title="NBExpand" Height="722" Width="1184">
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52.92"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Name="border" Grid.RowSpan="2">
+            <Image Name="image" Source="/Mustra;component/Resources/NBLC.png" Opacity="1" RenderTransformOrigin="0.5,0.5"  />
+        </Border>
+
+    </Grid>
+</Window>

@@ -13,38 +13,69 @@
 		                AllowsTransparency="True"
 
         Title="MainWindow" Height="654" Width="976">
-	<Window.DataContext>
-		<vm:MainWindowViewModel></vm:MainWindowViewModel>
-	</Window.DataContext>
-	<Border Background="White" Margin="5">
-		<Border.Effect>
-			<DropShadowEffect Color="#FFC7C5C5">
+    <Window.Resources>
+        <Style TargetType="{x:Type RadioButton}" x:Key="Hambuger">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <BulletDecorator Cursor="Hand" Background="{x:Null}">
+                            <!--Text element-->
+                            <Border Width="Auto" Height="51" CornerRadius="0" BorderBrush="{x:Null}" BorderThickness="1" x:Name="RadioBorder" Margin="-6,-2,-2,0" >
+                                <Border.Background>
+                                    <SolidColorBrush Color="Gray"></SolidColorBrush>
+                                </Border.Background>
+                                <Grid Height="38">
+                                    <ContentPresenter x:Name="RadioContent"   HorizontalAlignment="Center" VerticalAlignment="Center" OpacityMask="Black" />
+                                    <!--We don't need any bullet, cause our border is the switching element-->
+                                    <Border Margin="-2,0,184,0" Background="#FFCB2525" CornerRadius="1" x:Name="RadioMark" Height="0" />
+                                    <!-- To change the apearance to button stripe 2, edit the margins! -->
+                                </Grid>
+                            </Border>
+                        </BulletDecorator>
+                        <!--If item is checked, trigger the visibility of the mark-->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="RadioBorder" Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#FF3778D6"></SolidColorBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border Background="White" Margin="5">
+        <Border.Effect>
+            <DropShadowEffect Color="#FFC7C5C5">
 
-			</DropShadowEffect>
-		</Border.Effect>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-			</Grid.ColumnDefinitions>
-			<StackPanel>
-				<StackPanel Height="59" Background="#FF3778D6"
+            </DropShadowEffect>
+        </Border.Effect>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <StackPanel Height="59" Background="#FF3778D6"
 							Orientation="Horizontal">
-					<StackPanel Width="150">
-						<TextBlock
-							Text="Mustra!" FontSize="48" TextAlignment="Center" Margin="0" FontFamily="Haettenschweiler" Foreground="White" LineHeight="6">
+                    <StackPanel Width="150" Margin="11,0,0,0">
+                        <TextBlock
+							Text="Mustra!" FontSize="48" TextAlignment="Center" Margin="4,0,0,0" FontFamily="Haettenschweiler" Foreground="White" LineHeight="6">
 
-						</TextBlock>
-					</StackPanel>
-					<StackPanel Width="456">
-						<TextBlock
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Width="456">
+                        <TextBlock
 							Text=" : The Music Predict Program" FontSize="33" TextAlignment="Left" 
-							Margin="0,14,112,35" FontFamily="Haettenschweiler" Foreground="White">
+							Margin="0,14,25,35" FontFamily="Haettenschweiler" Foreground="White">
 
-						</TextBlock>
-					</StackPanel>
-					<StackPanel Width="206" Margin="140,0,0,0">
-						<StackPanel Height="45">
-							<TextBlock HorizontalAlignment="Right">
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Width="206" Margin="140,0,0,0">
+                        <StackPanel Height="45">
+                            <TextBlock HorizontalAlignment="Right">
 							<Hyperlink 
 								Click="close"
 								TextDecorations="{x:Null}">
@@ -55,223 +86,240 @@
 								</StackPanel>
 							</Hyperlink>
 								</TextBlock>
-						</StackPanel>
-					</StackPanel>
-				</StackPanel>
-				<Border Background="#FF3778D6" Height="28">
-					<Border.Effect>
-						<DropShadowEffect Color="#FFD1CBCB">
-						</DropShadowEffect>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <Border Background="#FF3778D6" Height="28">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FFD1CBCB">
+                        </DropShadowEffect>
 
-					</Border.Effect>
-					<StackPanel>
-						<TextBlock
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock
 							Text="Ver 0.1" TextAlignment="Left" 
 							Margin="17,-3,112,35" FontFamily="Haettenschweiler" Foreground="#FFAAA4A4" FontSize="23"/>
-					</StackPanel>
-				</Border>
-				<StackPanel  Margin="10,0" Orientation="Horizontal" Height="551">
-					<Border Height="518"
+                    </StackPanel>
+                </Border>
+                <StackPanel  Margin="10,0" Orientation="Horizontal" Height="551">
+                    <Border Height="518"
 			Background="White" Margin="0,4,0,0" Width="365" HorizontalAlignment="Left" Padding="0">
-						<Border.Effect>
-							<DropShadowEffect Color="#FFB8B8B8"/>
-						</Border.Effect>
-						<StackPanel>
-							<Border Margin="0" Height="520">
-								<StackPanel Orientation="Vertical">
-									<Border Height="50" BorderThickness="0,0,0,3" BorderBrush="#FF3778D6" Background="#FF3778D6">
-										<StackPanel>
-											<TextBlock
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FFB8B8B8"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <Border Margin="0" Height="520">
+                                <StackPanel Orientation="Vertical">
+                                    <Border Height="50" BorderThickness="0,0,0,3" BorderBrush="#FF3778D6" Background="#FF3778D6">
+                                        <StackPanel>
+                                            <TextBlock
 									Text="Write Your Music" FontSize="22" TextAlignment="Center" FontFamily="Haettenschweiler" 
 									Foreground="#FFF1F1F1" Margin="0,15,0,0"/>
-										</StackPanel>
-									</Border>
-									<StackPanel Height="453">
-										<Border Background="White"
-								Height="63" Margin="7,12,10,0">
-											<Border.Effect>
-												<DropShadowEffect Color="#FFC7C4C4"/>
-											</Border.Effect>
-											<StackPanel Orientation="Horizontal" 
-												>
-												<StackPanel Width="40" Height="40" Margin="12,0,0,0">
-													<StackPanel.Background>
-														<ImageBrush ImageSource="Resources/google.png" Stretch="Uniform"/>
-													</StackPanel.Background>
+                                        </StackPanel>
+                                    </Border>
+                                    <StackPanel Height="466">
+                                        <Border Background="White"
+								Height="63" Margin="7,8,10,0">
 
-												</StackPanel>
-												<StackPanel Width="244" Margin="12,1,0,0">
-													<TextBlock Text="Artist Google Search Result" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
-													<Border CornerRadius="0" Background="White" 
+                                            <StackPanel Orientation="Horizontal" 
+												>
+                                                <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="Resources/singer.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="244" Margin="12,1,0,0">
+                                                    <TextBlock Text="Artist Name" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                                    <Border CornerRadius="0" Background="White" 
 											BorderThickness="0,0,0,1"
 											BorderBrush="#FF3778D6"
 											Height="30">
-														<TextBox x:Name="GSR" Text="{Binding Gsr}" BorderBrush="{x:Null}" Background="{x:Null}"/>
-													</Border>
-												</StackPanel>
-											</StackPanel>
-										</Border>
-										<Border Background="White"
-								Height="63" Margin="7,12,10,0">
-											<Border.Effect>
-												<DropShadowEffect Color="#FFC7C4C4"/>
-											</Border.Effect>
-											<StackPanel Orientation="Horizontal" 
-												>
-												<StackPanel Width="40" Height="40" Margin="12,0,0,0">
-													<StackPanel.Background>
-														<ImageBrush ImageSource="Resources/news.png" Stretch="Uniform"/>
-													</StackPanel.Background>
+                                                        <TextBox x:Name="ArtistName" BorderBrush="{x:Null}" Background="{x:Null}"/>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Background="White"
+								Height="63" Margin="7,8,10,0">
 
-												</StackPanel>
-												<StackPanel Width="271" Margin="12,1,0,0">
-													<TextBlock Text="Artist &amp; Music Google News Result" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
-													<Border CornerRadius="0" Background="White" 
+                                            <StackPanel Orientation="Horizontal" 
+												>
+                                                <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="Resources/music.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="271" Margin="12,1,0,0">
+                                                    <TextBlock Text="Song Name" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                                    <Border CornerRadius="0" Background="White" 
 											BorderThickness="0,0,0,1"
 											BorderBrush="#FF3778D6"
 											Height="30" Margin="0,0,26,0">
-                                                        <TextBox x:Name="AMG" Text="{Binding Amg}" BorderBrush="{x:Null}" Background="{x:Null}"/>
-													</Border>
-												</StackPanel>
-											</StackPanel>
-										</Border>
-										<Border Background="White"
-								Height="63" Margin="7,12,10,0">
-											<Border.Effect>
-												<DropShadowEffect Color="#FFC7C4C4"/>
-											</Border.Effect>
-											<StackPanel Orientation="Horizontal" 
-												>
-												<StackPanel Width="40" Height="40" Margin="12,0,0,0">
-													<StackPanel.Background>
-														<ImageBrush ImageSource="Resources/music.png" Stretch="Uniform"/>
-													</StackPanel.Background>
+                                                        <TextBox x:Name="SongName" BorderBrush="{x:Null}" Background="{x:Null}"/>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Background="White"
+								Height="63" Margin="7,8,10,0">
 
-												</StackPanel>
-												<StackPanel Width="244" Margin="12,1,0,0">
-													<TextBlock Text="Music Google Search Result" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
-													<Border CornerRadius="0" Background="White" 
+                                            <StackPanel Orientation="Horizontal" 
+												>
+                                                <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="Resources/fan.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="244" Margin="12,1,0,0">
+                                                    <TextBlock Text="Fan Number" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                                    <Border CornerRadius="0" Background="White" 
 											BorderThickness="0,0,0,1"
 											BorderBrush="#FF3778D6"
 											Height="30">
-                                                        <TextBox x:Name="MGS" Text="{Binding Mgs}" BorderBrush="{x:Null}" Background="{x:Null}"/>
-													</Border>
-												</StackPanel>
-											</StackPanel>
-										</Border>
-										<Border Background="White"
-								Height="63" Margin="7,12,10,0">
-											<Border.Effect>
-												<DropShadowEffect Color="#FFC7C4C4"/>
-											</Border.Effect>
-											<StackPanel Orientation="Horizontal" 
-												>
-												<StackPanel Width="40" Height="40" Margin="12,0,0,0">
-													<StackPanel.Background>
-														<ImageBrush ImageSource="Resources/fan.png" Stretch="Uniform"/>
-													</StackPanel.Background>
+                                                        <TextBox x:Name="FanNum" BorderBrush="{x:Null}" Background="{x:Null}"/>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Background="White"
+								Height="63" Margin="7,8,10,0">
 
-												</StackPanel>
-												<StackPanel Width="244" Margin="12,1,0,0">
-													<TextBlock Text="Artist Fan Number" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
-													<Border CornerRadius="0" Background="White" 
+                                            <StackPanel Orientation="Horizontal" 
+												>
+                                                <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="Resources/moive.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="244" Margin="12,1,0,0">
+                                                    <TextBlock Text="Music Video" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                                    <Border CornerRadius="0" Background="White" 
 											BorderThickness="0,0,0,1"
 											BorderBrush="#FF3778D6"
 											Height="30">
-                                                        <TextBox x:Name="AFN" Text="{Binding Afn}" BorderBrush="{x:Null}" Background="{x:Null}"/>
-													</Border>
-												</StackPanel>
-											</StackPanel>
-										</Border>
-										<Border Background="White"
-								Height="63" Margin="7,12,10,0">
-											<Border.Effect>
-												<DropShadowEffect Color="#FFC7C4C4"/>
-											</Border.Effect>
-											<StackPanel Orientation="Horizontal" 
-												>
-												<StackPanel Width="40" Height="40" Margin="12,0,0,0">
-													<StackPanel.Background>
-														<ImageBrush ImageSource="Resources/moive.png" Stretch="Uniform"/>
-													</StackPanel.Background>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Width="182" Margin="0" Orientation="Horizontal">
+                                                                <TextBlock Width="138" Text="if you have Music Video?" Margin="0,6,0,0"></TextBlock>
+                                                                <Border CornerRadius="0" Height="16" 
+                                                                        BorderThickness="1"
+                                                                        BorderBrush="Black"
+                                                                        Margin="7,6,73,1" Width="18">
+                                                                    <CheckBox   x:Name="MVChk" Margin="0,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}">
 
-												</StackPanel>
-												<StackPanel Width="244" Margin="12,1,0,0">
-													<TextBlock Text="Music Video" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
-													<Border CornerRadius="0" Background="White" 
-											BorderThickness="0,0,0,1"
-											BorderBrush="#FF3778D6"
-											Height="30">
-                                                        <TextBox x:Name="MV" Text="{Binding Mv}" BorderBrush="{x:Null}" Background="{x:Null}"/>
-													</Border>
-												</StackPanel>
-											</StackPanel>
-										</Border>
-										<Border 
+                                                                    </CheckBox>
+                                                                </Border>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Background="White"
+                                            Height="63" Margin="7,14,10,0">
+
+                                            <StackPanel Orientation="Horizontal" 
+												>
+                                                <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="Resources/rule.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="244" Margin="12,1,0,0">
+                                                    <TextBlock Text="Rule Setting" FontSize="18" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                                    <Border CornerRadius="0" Background="White" 
+                                                        BorderThickness="0,0,0,0"
+                                                        BorderBrush="#FF3778D6"
+                                                        Height="30">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Width="243" Margin="0" Orientation="Horizontal">
+                                                                <ComboBox Width="166" ItemsSource="{Binding RuleList}" SelectedIndex="0" x:Name="RuleCombo"
+                                                                          />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border 
 								CornerRadius="20"
 								Background="#FF3778D6"
 								Margin="7,14,9,0" Height="49">
-											<Border.Effect>
-												<DropShadowEffect Color="#FFCDCDCD"/>
-											</Border.Effect>
-                                            <TextBlock><Hyperlink Command="{Binding Predict}" TextDecorations="{x:Null}"><InlineUIContainer>
+                                            <Border.Effect>
+                                                <DropShadowEffect Color="#FFCDCDCD"/>
+                                            </Border.Effect>
+                                            <TextBlock><Hyperlink 
+                                                Click="Hyperlink_Click"
+                                                TextDecorations="{x:Null}"><InlineUIContainer>
 											<StackPanel Width="341" Height="47">
 												<TextBlock
 													Text="Predict" FontSize="22" TextAlignment="Center" FontFamily="Haettenschweiler" 
 													Foreground="#FFF1F1F1" Margin="0,15,0,0"/>
 											</StackPanel>
 										</InlineUIContainer></Hyperlink></TextBlock>
-										</Border>
-									</StackPanel>
-								</StackPanel>
-							</Border>
-						</StackPanel>
-					</Border>
-					<Border Height="518" Margin="10,4,578,0"
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <Border Height="518" Margin="10,4,578,0"
 		 Background="White" Width="563" Padding="0">
-						<Border.Effect>
-							<DropShadowEffect Color="#FFB8B8B8"/>
-						</Border.Effect>
-						<StackPanel>
-							<Border Margin="0" Height="520">
-								<StackPanel Orientation="Vertical">
-									<Border Height="50" BorderThickness="0,0,0,3" BorderBrush="#FF3778D6">
-										<StackPanel Orientation="Horizontal">
-											<StackPanel Width="281" Background="#FF535353">
-												<TextBlock TextAlignment="Center" Height="48">
-													<Hyperlink TextDecorations="{x:Null}"
-															   Command="{Binding LoadPredictPage}">
-												<StackPanel Width="281" Height="47">
-														<TextBlock
-				   Text="Write Your Music" FontSize="22" TextAlignment="Center" FontFamily="Haettenschweiler" 
-				   Foreground="#FFF1F1F1" Margin="0,14,0,0" Height="33"/>
-													</StackPanel>
-														</Hyperlink>
-													</TextBlock>
-											</StackPanel>
-											<StackPanel Width="281" Background="#FF3778D6">
-												<TextBlock TextAlignment="Center" Height="48">
-													<Hyperlink TextDecorations="{x:Null}"><InlineUIContainer>
-						   <StackPanel Width="281" Height="47">
-							   <TextBlock
-								   Text="Write Your Music" FontSize="22" TextAlignment="Center" FontFamily="Haettenschweiler" 
-								   Foreground="#FFF1F1F1" Margin="0,14,0,0" Height="33"/>
-						   </StackPanel>
-					   </InlineUIContainer></Hyperlink></TextBlock>
-											</StackPanel>
-										</StackPanel>
-									</Border>
-									<StackPanel Height="453">
-										<ContentControl Content="{Binding ContentView}" Height="453">
-											
-										</ContentControl>
-									</StackPanel>
-								</StackPanel>
-							</Border>
-						</StackPanel>
-					</Border>
-				</StackPanel>
-			</StackPanel>
-		</Grid>
-	</Border>
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FFB8B8B8"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <Border Margin="0" Height="520">
+                                <StackPanel Orientation="Vertical">
+                                    <Border Height="50" BorderThickness="0,0,0,3" BorderBrush="#FF3778D6">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Width="188">
+                                                <Border Height="47" BorderThickness="1,1,1,1">
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-1" Width="188">
+                                                        <RadioButton  x:Name="PredictButton" IsEnabled="False"
+                                            Command="{Binding LoadPredictPage}"
+                                            GroupName="menu" Content="Predict"  Style="{StaticResource Hambuger}" BorderBrush="{x:Null}"
+                                                Width="187" FontSize="20" Foreground="#FFF1F1F1" FontFamily="Impact" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Height="47" RenderTransformOrigin="0.503,0.362"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </StackPanel>
+                                            <StackPanel Width="188" Background="Gray">
+                                                <Border Height="47" BorderThickness="1,1,1,1">
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-1" Width="188">
+                                                        <RadioButton 
+                                                            Command="{Binding LoadCMPage}"
+                                                            GroupName="menu" Content="Classifier Model"  Style="{StaticResource Hambuger}" BorderBrush="{x:Null}"
+                                                            Width="187" FontSize="20" Foreground="#FFF1F1F1" FontFamily="Impact" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Height="47" RenderTransformOrigin="0.503,0.362"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </StackPanel>
+                                            <StackPanel Width="188" Background="Gray">
+                                                <Border Height="47" BorderThickness="1,1,1,1">
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-1" Width="188">
+                                                        <RadioButton 
+                                                            Command="{Binding LoadLCPage}"
+                                                            GroupName="menu" Content="Learning Curve"  Style="{StaticResource Hambuger}" BorderBrush="{x:Null}"
+                                                            Width="187" FontSize="20" Foreground="#FFF1F1F1" FontFamily="Impact" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Height="47" RenderTransformOrigin="0.503,0.362"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                    <StackPanel Height="453">
+                                        <ContentControl Content="{Binding ContentView}" Height="453">
+
+                                        </ContentControl>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

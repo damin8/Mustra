@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,11 +58,63 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="InterFace\Command.cs" />
-    <Compile Include="ViewModel\MustraSock.cs" />
+    <Compile Include="Model\InstancePacket.cs" />
+    <Compile Include="Network\MustraSock.cs" />
+    <Compile Include="ViewModel\CMUserControlViewModel.cs" />
+    <Compile Include="ViewModel\LCUserControlViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\LCVM\NBLCUserControlViewModel.cs" />
+    <Compile Include="ViewModel\NBUserControlViewModel.cs" />
+    <Compile Include="ViewModel\OneRuleCMUserControViewModel.cs" />
+    <Compile Include="ViewModel\LCVM\OneRuleLCUserControlViewModel.cs" />
     <Compile Include="ViewModel\PredictUserControlViewModel.cs" />
+    <Compile Include="ViewModel\LCVM\TotalLCUserControlViewModel.cs" />
+    <Compile Include="ViewModel\LCVM\TreeLCUserControlViewModel.cs" />
+    <Compile Include="ViewModel\TreeUserControlViewModel.cs" />
+    <Compile Include="View\CMUserControl.xaml.cs">
+      <DependentUpon>CMUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\ExpandWindow\NBExpand.xaml.cs">
+      <DependentUpon>NBExpand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\ExpandWindow\OneRuleExpand.xaml.cs">
+      <DependentUpon>OneRuleExpand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\ExpandWindow\TotalExpand.xaml.cs">
+      <DependentUpon>TotalExpand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\ExpandWindow\TreeExpand.xaml.cs">
+      <DependentUpon>TreeExpand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\NBLCUserControl.xaml.cs">
+      <DependentUpon>NBLCUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\OneRuleLCUserControl.xaml.cs">
+      <DependentUpon>OneRuleLCUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\TreeLCUserControl.xaml.cs">
+      <DependentUpon>TreeLCUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUserControl.xaml.cs">
+      <DependentUpon>LCUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NBUserControl.xaml.cs">
+      <DependentUpon>NBUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OneRuleCMUserControl.xaml.cs">
+      <DependentUpon>OneRuleCMUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PredictUserContorl.xaml.cs">
       <DependentUpon>PredictUserContorl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LCUC\TotalLCUserControl.xaml.cs">
+      <DependentUpon>TotalLCUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tree.xaml.cs">
+      <DependentUpon>Tree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeUserControl.xaml.cs">
+      <DependentUpon>TreeUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -75,7 +128,63 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CMUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\ExpandWindow\NBExpand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\ExpandWindow\OneRuleExpand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\ExpandWindow\TotalExpand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\ExpandWindow\TreeExpand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\NBLCUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\OneRuleLCUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\TreeLCUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NBUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OneRuleCMUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PredictUserContorl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LCUC\TotalLCUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,6 +230,35 @@
   <ItemGroup>
     <Resource Include="Resources\music.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\like.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tree.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\serach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NBLC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OneLC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\totalLC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TreeLC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\singer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Control\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rule.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

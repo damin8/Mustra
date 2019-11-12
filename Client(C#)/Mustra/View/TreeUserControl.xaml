@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Mustra.View.TreeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mustra.View"
+             mc:Ignorable="d" 
+             xmlns:vm ="clr-namespace:Mustra.ViewModel"
+             d:DesignHeight="453" d:DesignWidth="563">
+    <Grid Background="white">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Height="38" Background="#FF3778D6" Orientation="Horizontal">
+                <TextBlock TextAlignment="Center"
+                           Text="J48 Decision Tree" Margin="165,10,158,5" Foreground="White" FontSize="18" FontFamily="Impact" Width="217"/>
+                <TextBlock Width="51" Margin="-30,0,0,0">
+                    <Hyperlink TextDecorations="{x:Null}" Command="{Binding Expand}">
+                        <StackPanel Height="34" Width="45">
+                            <Border Height="34" Margin="0,2,5,0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Mustra;component/Resources/serach.png" Stretch="Uniform"/>
+                                </Border.Background>
+                                <TextBlock Text="              "></TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Width="562" Height="415" Margin="0,0,1,0">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="/Mustra;component/Resources/tree.JPG"/>
+                </StackPanel.Background>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

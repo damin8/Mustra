@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Mustra"
+             xmlns:view="clr-namespace:Mustra.View"
              StartupUri="MainWindow.xaml">
 	<Application.Resources>
 		<ResourceDictionary 
@@ -9,6 +10,8 @@
      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
             xmlns:uc="clr-namespace:Mustra.View"
+             xmlns:uclc="clr-namespace:Mustra.View.LCUC"
+           xmlns:vmlc="clr-namespace:Mustra.ViewModel.LCVM"
            xmlns:vm="clr-namespace:Mustra.ViewModel"
             >
 
@@ -17,6 +20,33 @@
 			<DataTemplate DataType="{x:Type vm:PredictUserControlViewModel}">
 				<uc:PredictUserContorl></uc:PredictUserContorl>
 			</DataTemplate>
-		</ResourceDictionary>
+            <DataTemplate DataType="{x:Type vm:CMUserControlViewModel}">
+                <uc:CMUserControl></uc:CMUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:OneRuleCMUserControViewModel}">
+                <uc:OneRuleCMUserControl></uc:OneRuleCMUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:NBUserControlViewModel}">
+                <uc:NBUserControl></uc:NBUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:TreeUserControlViewModel}">
+                <uc:TreeUserControl></uc:TreeUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:LCUserControlViewModel}">
+                <uc:LCUserControl></uc:LCUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmlc:TotalLCUserControlViewModel}">
+                <uclc:TotalLCUserControl></uclc:TotalLCUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmlc:OneRuleLCUserControlViewModel}">
+                <uclc:OneRuleLCUserControl></uclc:OneRuleLCUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmlc:NBLCUserControlViewModel}">
+                <uclc:NBLCUserControl></uclc:NBLCUserControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmlc:TreeLCUserControlViewModel}">
+                <uclc:TreeLCUserControl></uclc:TreeLCUserControl>
+            </DataTemplate>
+        </ResourceDictionary>
 	</Application.Resources>
 </Application>

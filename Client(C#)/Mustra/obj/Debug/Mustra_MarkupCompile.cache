@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\damin\source\repos\Mustra\Mustra\obj\Debug\
+C:\Users\damin\Downloads\DataMining-master\DataMining-master\Mustra\Mustra\obj\Debug\
 Mustra
 none
 false
 DEBUG;TRACE
-C:\Users\damin\source\repos\Mustra\Mustra\App.xaml
-2728455385
+C:\Users\damin\Downloads\DataMining-master\DataMining-master\Mustra\Mustra\App.xaml
+16521806852
 
-101214619356
-141183416626
-MainWindow.xaml;View\PredictUserContorl.xaml;
+34-535712023
+151397803362
+MainWindow.xaml;View\CMUserControl.xaml;View\LCUC\ExpandWindow\NBExpand.xaml;View\LCUC\ExpandWindow\OneRuleExpand.xaml;View\LCUC\ExpandWindow\TotalExpand.xaml;View\LCUC\ExpandWindow\TreeExpand.xaml;View\LCUC\NBLCUserControl.xaml;View\LCUC\OneRuleLCUserControl.xaml;View\LCUC\TreeLCUserControl.xaml;View\LCUserControl.xaml;View\NBUserControl.xaml;View\OneRuleCMUserControl.xaml;View\PredictUserContorl.xaml;View\LCUC\TotalLCUserControl.xaml;View\Tree.xaml;View\TreeUserControl.xaml;
 
 False
 

@@ -1,5 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -7,82 +9,40 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Mustra.InterFace;
-using Mustra.ViewModel;
+using Mustra.Model;
 
 namespace Mustra.ViewModel
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
-        private MustraSock MS;
-        private string algo;
-        private string gsr;
-        private string amg;
-        private string mgs;
-        private string afn;
-        private string mv;
+        private static MainWindowViewModel _instance = null;
+        private string _SelectedRule;
+        public string SelectedRule
+        {
+            get
+            {
+                return this._SelectedRule;
+            }
+            set
+            {
+                this._SelectedRule = value;
+                OnPropertyChanged("SelectedRule");
+            }
+        }
+        public static MainWindowViewModel instance
+        {
+            get
+            {
+                if (_instance == null) _instance = new MainWindowViewModel();
+
+                return _instance;
+            }
+        }
         private object _contentView;
         private PredictUserControlViewModel _predictUserControlViewModel;
+        private CMUserControlViewModel _cMUserControlViewModel;
+        private LCUserControlViewModel lCUserControlViewModel;
 
-        #region 프로퍼티
-        
-        public string Algo
-        {
-            get { return algo; }
-            set
-            {
-                this.algo = value;
-                this.OnPropertyChanged("Algo");
-            }
-        }
-        public string Gsr
-        {
-            get { return gsr; }
-            set
-            {
-                this.gsr = value;
-                this.OnPropertyChanged("Gsr");
-            }
-        }
-
-        public string Amg
-        {
-            get { return amg; }
-            set
-            {
-                this.amg = value;
-                this.OnPropertyChanged("Amg");
-            }
-        }
-        
-        public string Mgs
-        {
-            get { return mgs; }
-            set
-            {
-                this.mgs = value;
-                this.OnPropertyChanged("Mgs");
-            }
-        }
-
-        public string Afn
-        {
-            get { return afn; }
-            set
-            {
-                this.afn = value;
-                this.OnPropertyChanged("Afn");
-            }
-        }
-
-        public string Mv
-        {
-            get { return mv; }
-            set
-            {
-                this.mv = value;
-                this.OnPropertyChanged("Mv");
-            }
-        }
         public object ContentView
         {
             get { return this._contentView; }
@@ -92,35 +52,58 @@ namespace Mustra.ViewModel
                 this.OnPropertyChanged("ContentView");
             }
         }
-        #endregion
 
         public ICommand LoadPredictPage { get; set; }
-        public ICommand Predict { get; set; }
+        public ICommand LoadCMPage { get; set; }
+        public ICommand LoadLCPage { get; set; }
 
-
-        public MainWindowViewModel()
+        private ObservableCollection<string> ruleList;
+        public ObservableCollection<string> RuleList
+        {
+            get { return this.ruleList; }
+            set { this.ruleList = value; }
+        }
+        private MainWindowViewModel()
         {
             this.ContentView = null;
             this.LoadPredictPage = new Command(loadPredictPage,CE);
-            _predictUserControlViewModel = new PredictUserControlViewModel();
-            Predict = new Command(goPredict, CE);
-            MS = new MustraSock();
+            this.LoadCMPage = new Command(loadCMPage, CE);
+            this.LoadLCPage = new Command(loadLCPage, CE);
+            lCUserControlViewModel = new LCUserControlViewModel();
+            _predictUserControlViewModel = PredictUserControlViewModel.instance;
+            _cMUserControlViewModel = new CMUserControlViewModel();
+            RuleList = new ObservableCollection<string>();
+            RuleList.Add("OneR");
+            RuleList.Add("Naive Bayesian");
+            RuleList.Add("J48");
         }
 
-        public void goPredict(object obj)
+        public void sendNewInstance(InstancePacket instancePacket)
         {
-            string[] attribute = new string[6];
-            attribute[0] = "Tree";
-            attribute[1] = Gsr.ToString();
-            attribute[2] = Amg.ToString();
-            attribute[3] = Mgs.ToString();
-            attribute[4] = Afn.ToString();
-            attribute[5] = Mv.ToString();
-            MS.SendData(attribute);
+            string[] attribute = new string[5];
+            attribute[0] = instancePacket.Rule;
+            attribute[1] = instancePacket.ArtistName;
+            attribute[2] = instancePacket.SongName;
+            attribute[3] = instancePacket.FanNumber;
+            attribute[4] = instancePacket.VideoChk;
+            // 이제 여기서 이 정보를 서버에게 넘기면 됨
+            ((App)Application.Current).Send(attribute);
         }
 
         #region Page Change Operations
-        private void loadPredictPage(object e) =>this._contentView = this._predictUserControlViewModel;
+        public void loadPredictPage(object e)
+        {
+            this.ContentView = this._predictUserControlViewModel;
+        }
+       
+        private void loadLCPage(object e)
+        {
+            this.ContentView = this.lCUserControlViewModel;
+        }
+        private void loadCMPage(object e)
+        {
+            this.ContentView = this._cMUserControlViewModel;
+        }
         private Boolean CE(object e)=>true;
         #endregion
 

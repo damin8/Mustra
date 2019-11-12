@@ -4,11 +4,392 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Mustra.View"
+             xmlns:vm ="clr-namespace:Mustra.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="453" d:DesignWidth="563">
-    <Grid Background="Bisque">
-		<StackPanel>
-			<StackPanel Height="61" Background="#FF3778D6"></StackPanel>
-		</StackPanel>
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="predictResult">
+            <Border Name="border" Background="Navy">
+                <TextBlock Name="text" Foreground="White">I should fade and go red when you uncheck the textbox</TextBlock>
+            </Border>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding ElementName=ArankText, Path=Text}" Value="yes">
+                    <Setter TargetName="border" Property="Border.Background" Value="Red"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+            <StackPanel Height="46" Background="#FF3778D6">
+                <TextBlock TextAlignment="Center"
+                           Text="Prediction of your New Instnace" Height="35" Margin="0,5.2,0,0" Foreground="White" FontSize="24" FontFamily="Impact"></TextBlock>
+            </StackPanel>
+            <StackPanel Background="White" Height="409">
+                <StackPanel Height="407" Orientation="Horizontal">
+                    <Border Margin="13,12,0,22" Width="298" Background="White">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FFE2D8D8"></DropShadowEffect>
+                        </Border.Effect>
+                        <StackPanel>
+                            <StackPanel Height="30" Background="#FF3778D6">
+                                <TextBlock TextAlignment="Center"
+                           Text="Your Input" Height="22" Margin="0,5.2,0,0" Foreground="White" FontSize="18" FontFamily="Impact"></TextBlock>
+                            </StackPanel>
+                            <Border Background="White"
+								Height="44" Margin="7,12,10,0">
+
+                                <StackPanel Orientation="Horizontal" 
+												>
+                                    <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="/Mustra;component/Resources/google.png" Stretch="Uniform"/>
+                                        </StackPanel.Background>
+
+                                    </StackPanel>
+                                    <StackPanel Width="216" Margin="12,1,0,0">
+                                        <TextBlock Text="Artist Google Search Result" FontSize="14" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                        <Border CornerRadius="0" Background="White" 
+											BorderThickness="0,0,0,1"
+											BorderBrush="#FF3778D6"
+											Height="21" Margin="0,-2,25,0">
+                                            <TextBlock Margin="0,0,0,-1" Text="{Binding ASR}"></TextBlock>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White"
+                                Height="44" Margin="7,12,10,0">
+
+                                <StackPanel Orientation="Horizontal" 
+												>
+                                    <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="/Mustra;component/Resources/music.png" Stretch="Uniform"/>
+                                        </StackPanel.Background>
+
+                                    </StackPanel>
+                                    <StackPanel Width="216" Margin="12,1,0,0">
+                                        <TextBlock Text="Song Search Result" FontSize="14" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                        <Border CornerRadius="0" Background="White" 
+                                            BorderThickness="0,0,0,1"
+                                            BorderBrush="#FF3778D6"
+                                            Height="21" Margin="0,-2,25,0">
+                                            <TextBlock Margin="0,0,0,-1"  Text="{Binding ASSR}"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White"
+                                Height="44" Margin="7,12,10,0">
+
+                                <StackPanel Orientation="Horizontal" 
+												>
+                                    <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="/Mustra;component/Resources/news.png" Stretch="Uniform"/>
+                                        </StackPanel.Background>
+
+                                    </StackPanel>
+                                    <StackPanel Width="216" Margin="12,1,0,0">
+                                        <TextBlock Text="News Result" FontSize="14" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                        <Border CornerRadius="0" Background="White" 
+                                            BorderThickness="0,0,0,1"
+                                            BorderBrush="#FF3778D6"
+                                            Height="21" Margin="0,-2,25,0">
+                                            <TextBlock Margin="0,0,0,-1" Text="{Binding ASSNR}"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White"
+                                Height="44" Margin="7,12,10,0">
+
+                                <StackPanel Orientation="Horizontal" 
+												>
+                                    <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="/Mustra;component/Resources/fan.png" Stretch="Uniform"/>
+                                        </StackPanel.Background>
+
+                                    </StackPanel>
+                                    <StackPanel Width="216" Margin="12,1,0,0">
+                                        <TextBlock Text="Artist's Fan" FontSize="14" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                        <Border CornerRadius="0" Background="White" 
+                                            BorderThickness="0,0,0,1"
+                                            BorderBrush="#FF3778D6"
+                                            Height="21" Margin="0,-2,25,0">
+                                            <TextBlock Margin="0,0,0,-1" Text="{Binding AFR}"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White"
+                                Height="44" Margin="7,12,10,0">
+
+                                <StackPanel Orientation="Horizontal" 
+												>
+                                    <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="/Mustra;component/Resources/moive.png" Stretch="Uniform"/>
+                                        </StackPanel.Background>
+
+                                    </StackPanel>
+                                    <StackPanel Width="216" Margin="12,1,0,0">
+                                        <TextBlock Text="Music Video" FontSize="14" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                        <Border CornerRadius="0" Background="White" 
+                                            BorderThickness="0,0,0,1"
+                                            BorderBrush="#FF3778D6"
+                                            Height="21" Margin="0,-2,25,0">
+                                            <TextBlock Margin="0,0,0,-1" Text="{Binding  SMR}"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White"
+                                Height="44" Margin="7,12,10,0">
+
+                                <StackPanel Orientation="Horizontal" 
+												>
+                                    <StackPanel Width="40" Height="40" Margin="12,0,0,0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="/Mustra;component/Resources/rule.png" Stretch="Uniform"/>
+                                        </StackPanel.Background>
+
+                                    </StackPanel>
+                                    <StackPanel Width="216" Margin="12,1,0,0">
+                                        <TextBlock Text="Rule" FontSize="14" Margin="0,6,0,0" FontFamily="Gill Sans MT"/>
+                                        <Border CornerRadius="0" Background="White" 
+                                            BorderThickness="0,0,0,1"
+                                            BorderBrush="#FF3778D6"
+                                            Height="21" Margin="0,-2,25,0">
+                                            <TextBlock Margin="0,0,0,-1" Text="{Binding Rule}"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <StackPanel Width="253" Orientation="Vertical">
+                        <Border Margin="14,12,12,0" Height="70" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#FFE4E0E0"></DropShadowEffect>
+                            </Border.Effect>
+                            <StackPanel>
+                                <StackPanel Background="#FF3B76CA" Height="30">
+                                    <TextBlock TextAlignment="Center"
+                                        Text="Result" Height="23" Margin="0,5.2,0,0" Foreground="White" FontSize="18" FontFamily="Impact"/>
+                                </StackPanel>
+                                <StackPanel Height="41" Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Arank}" x:Name="ArankText"  Width="0"></TextBlock>
+                                    <TextBlock Text="{Binding Brank}" x:Name="BrankText"  Width="0"></TextBlock>
+                                    <TextBlock Text="{Binding Crank}" x:Name="CrankText"  Width="0"></TextBlock>
+                                    <TextBlock Text="{Binding Drank}" x:Name="DrankText"  Width="0"/>
+
+                                    <Border Width="56.7">
+                                        <Border.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=ArankText, Path=Text}" Value="yes">
+                                                        <Setter Property="Border.Background" >
+                                                            <Setter.Value>
+                                                                <SolidColorBrush Color="#FF3B76CA"></SolidColorBrush>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=ArankText, Path=Text}" Value="no">
+                                                        <Setter Property="Border.Background"  Value="#FF6E6E6E"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock 
+                                            FontSize="33"
+                                            TextAlignment="Center"
+                                            Text="A" Foreground="White" FontWeight="Bold" Margin="0,-4,0,0"></TextBlock>
+                                    </Border>
+                                    <Border Width="56.7">
+                                        <Border.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BrankText}" Value="yes">
+                                                        <Setter Property="Border.Background" Value="#FF3B76CA" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=BrankText}" Value="no">
+                                                        <Setter Property="Border.Background"  Value="#FF6E6E6E"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock 
+                                            FontSize="33"
+                                            TextAlignment="Center"
+                                            Text="B" Foreground="White" FontWeight="Bold" Margin="0,-4,0,0"/>
+                                    </Border>
+                                    <Border Width="56.7">
+                                        <Border.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=CrankText}" Value="yes">
+                                                        <Setter Property="Border.Background" Value="#FF3B76CA" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=CrankText}" Value="no">
+                                                        <Setter Property="Border.Background"  Value="#FF6E6E6E"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock 
+                                            FontSize="33"
+                                            TextAlignment="Center"
+                                            Text="C" Foreground="White" FontWeight="Bold" Margin="0,-4,0,0"/>
+                                    </Border>
+                                    <Border Width="56.7">
+                                        <Border.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=DrankText}" Value="yes">
+                                                        <Setter Property="Border.Background" Value="#FF3B76CA" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=DrankText}" Value="no">
+                                                        <Setter Property="Border.Background"  Value="#FF6E6E6E"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock 
+                                            FontSize="33"
+                                            TextAlignment="Center"
+                                            Text="D" Foreground="White" FontWeight="Bold" Margin="0,-4,0,0"/>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="40" Orientation="Horizontal">
+                                    <Border></Border>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="14,12,12,0" Height="291" Background="White">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#FFE4E0E0"></DropShadowEffect>
+                            </Border.Effect>
+                            <StackPanel>
+                                <StackPanel Background="#FF3B76CA" Height="30">
+                                    <TextBlock TextAlignment="Center"
+                                        Text="Classifier Rule" Height="23" Margin="0,5.2,0,0" Foreground="White" FontSize="18" FontFamily="Impact"/>
+                                </StackPanel>
+                                <StackPanel Height="261">
+                                    <StackPanel Height="53" Orientation="Horizontal">
+                                        <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Width="56">
+                                            <TextBlock 
+                                                FontSize="33"
+                                                TextAlignment="Center"
+                                                Text="A" Foreground="Black" FontWeight="Bold" Height="45"
+                                                Margin="0"/>
+                                            <TextBlock Text="Rank" TextAlignment="Center" Margin="0,27,0,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Width="152" Margin="11,0,0,0">
+                                            <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
+                                                <StackPanel Width="24">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="100">
+                                                    <TextBlock Text="People Like" Margin="3,6,0,0" FontWeight="Bold" FontFamily="Comic Sans MS"></TextBlock>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Height="23" Margin="0,-4,0,0" Background="#FFF94545">
+                                                <TextBlock Text="OVER 20000 " Foreground="White" TextAlignment="Center" Margin="0,3,70,0" FontWeight="Bold"></TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Height="53" Orientation="Horizontal">
+                                        <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Width="56">
+                                            <TextBlock 
+                                                FontSize="33"
+                                                TextAlignment="Center"
+                                                Text="B" Foreground="Black" FontWeight="Bold" Height="45"
+                                                Margin="0"/>
+                                            <TextBlock Text="Rank" TextAlignment="Center" Margin="0,27,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Width="152" Margin="11,0,0,0">
+                                            <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
+                                                <StackPanel Width="24">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="100">
+                                                    <TextBlock Text="People Like" Margin="3,6,0,0" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Height="23" Margin="0,-4,45,0" Background="#FFF94545">
+                                                <TextBlock Text="OVER 10000 " Foreground="White" TextAlignment="Center" Margin="0,3,32,0" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Height="53" Orientation="Horizontal">
+                                        <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Width="56">
+                                            <TextBlock 
+                                                FontSize="33"
+                                                TextAlignment="Center"
+                                                Text="C" Foreground="Black" FontWeight="Bold" Height="45"
+                                                Margin="0"/>
+                                            <TextBlock Text="Rank" TextAlignment="Center" Margin="0,27,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Width="152" Margin="11,0,0,0">
+                                            <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
+                                                <StackPanel Width="24">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="100">
+                                                    <TextBlock Text="People Like" Margin="3,6,0,0" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Height="23" Margin="0,-4,84,0" Background="#FFF94545">
+                                                <TextBlock Text="OVER 1000 " Foreground="White" TextAlignment="Center" Margin="0,3,0,0" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Height="53" Orientation="Horizontal">
+                                        <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Width="56">
+                                            <TextBlock 
+                                                FontSize="33"
+                                                TextAlignment="Center"
+                                                Text="D" Foreground="Black" FontWeight="Bold" Height="45"
+                                                Margin="0"/>
+                                            <TextBlock Text="Rank" TextAlignment="Center" Margin="0,27,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Width="152" Margin="11,0,0,0">
+                                            <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
+                                                <StackPanel Width="24">
+                                                    <StackPanel.Background>
+                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                    </StackPanel.Background>
+
+                                                </StackPanel>
+                                                <StackPanel Width="100">
+                                                    <TextBlock Text="People Like" Margin="3,6,0,0" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Height="23" Margin="0,-4,106,0" Background="#FFF94545">
+                                                <TextBlock Text="UNDER" Foreground="White" TextAlignment="Center" Margin="0,3,0,0" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

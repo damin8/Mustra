@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Mustra.View.OneRuleCMUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mustra.View"
+                mc:Ignorable="d" 
+             xmlns:vm ="clr-namespace:Mustra.ViewModel"
+             d:DesignHeight="352" d:DesignWidth="543">
+    <UserControl.DataContext>
+        <vm:OneRuleCMUserControViewModel></vm:OneRuleCMUserControViewModel>
+    </UserControl.DataContext>
+    <Grid Background="White">
+        <StackPanel Orientation="Vertical">
+            <Border Background="White" Height="352" Margin="0,0,0,10">
+                <StackPanel>
+                    <StackPanel Height="351">
+                        <Border Height="350">
+                            <StackPanel Orientation="Vertical" Margin="0,0,0,-28">
+                                <StackPanel Margin="0" Orientation="Horizontal" Height="347" RenderTransformOrigin="0.5,0.5">
+                                    <StackPanel.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="0.178"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform X="0.497"/>
+                                        </TransformGroup>
+                                    </StackPanel.RenderTransform>
+                                    <Border Width="524" Margin="18,14,4,-21" Background="White">
+                                        <StackPanel Orientation="Vertical">
+                                            <ScrollViewer Height="336">
+                                                <TextBlock Height="407"
+                                                TextWrapping="Wrap" Text="{Binding OneRuleCMString}" FontSize="18"/>
+                                            </ScrollViewer>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

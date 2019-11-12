@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Mustra.View.NBUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mustra.View"
+             mc:Ignorable="d" 
+              xmlns:vm ="clr-namespace:Mustra.ViewModel"
+             d:DesignHeight="453" d:DesignWidth="563">
+    <UserControl.DataContext>
+        <vm:NBUserControlViewModel></vm:NBUserControlViewModel>
+    </UserControl.DataContext>
+    <Grid Background="White">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Height="446">
+                <StackPanel Margin="0" Orientation="Horizontal" Height="453" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="0.178"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.497"/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <StackPanel Width="553" Margin="8,10,4,-103" Orientation="Vertical">
+                        <ScrollViewer Height="429">
+                            <TextBlock Height="1390"
+                                                TextWrapping="Wrap" Text="{Binding NBCMString}" FontSize="14"/>
+                        </ScrollViewer>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
