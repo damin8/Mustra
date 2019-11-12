@@ -21,6 +21,7 @@ import weka.core.Instances;
 import weka.core.Utils;
 import weka.core.converters.ConverterUtils.DataSource;
 import SocketServer.*;
+import selenium.SeleniumCrawler;
 
 public class MusicModel {
 	private static MusicModel WM = new MusicModel();
@@ -123,93 +124,63 @@ public class MusicModel {
 		return WM;
 	}
 
-	public void Test(String algorithm,double asr, double assr, double asnsr, double can
-			,String viCCo) {
+	public void Test(String algorithm,String artN, String songN, double fanNum, String videoChk) {
 		Instances testDataset;
 		try {
-			//알고리즘 별로 if문 추가 해줘야 
 			testDataset = musicSource.getDataSet();
 			testDataset.setClassIndex(testDataset.numAttributes() - 1);
-			/*String outlook = sc.next();
-			String temperature = sc.next();
-			String humidity = sc.next();
-			String windy = sc.next();*/
-			double dviCCo;
-			if(viCCo.equals("No")) {
-				dviCCo = 0.0;
+			double VideoChk;
+			if(videoChk.equals("no")) { // arff파일에 no가 첫 번째
+				VideoChk = 0.0;
 			}
 			else {
-				dviCCo = 1.0;
+				VideoChk = 1.0;
 			}
-			/*if(outlook.equals("sunny")) {
-				o = 0.0;
+			SeleniumCrawler selTest = new SeleniumCrawler();
+			ArrayList<String> testArray = selTest.getSearchResult(artN,songN);
+			Instance newInst = testDataset.instance(2);
+			String tasr = testArray.get(0);
+			String tassr = testArray.get(1);
+			String tasnsr = testArray.get(2);
+			double asr = Double.parseDouble(tasr);
+			double assr = Double.parseDouble(tassr);
+			double asnsr = Double.parseDouble(tasnsr);
+			newInst.setValue(0, asr);
+			newInst.setValue(1, assr);
+			newInst.setValue(2,asnsr); 
+			newInst.setValue(3,fanNum);
+			newInst.setValue(4,VideoChk);
+			
+			double predNB;
+			if(algorithm.equals("OneR")) {
+				predNB = musicOneR.classifyInstance(newInst);
+				predString = testDataset.classAttribute().value((int) predNB);
 			}
-			else if(outlook.equals("overcast")) {
-				o = 1.0;
-			}
-			else {
-				o = 2.0;
-			}
-			if(temperature.equals("hot")) {
-				t = 0.0;
-			}
-			else if(temperature.equals("mild")) {
-				t = 1.0;
-			}
-			else {
-				t = 2.0;
-			}
-			if(humidity.equals("high")) {
-				h = 0.0;
-			}
-			else {
-				h = 1.0;
-			}
-			if(windy.equals("true")) {
-				w = 0.0;
+			else if(algorithm.equals("NaiveBayesian")) {
+				predNB = musicNaiveBayes.classifyInstance(newInst);
+				predString = testDataset.classAttribute().value((int) predNB);
 			}
 			else {
-				w = 1.0;
-			}*/
+				predNB = musicTree.classifyInstance(newInst);
+				predString = testDataset.classAttribute().value((int) predNB);
+			}
+			SendData.getSendData().Send(predString+"~"+tasr+"~"+tassr+"~"+tasnsr+"~"+fanNum+"~"+videoChk+"~"); // 웹에서 따온 asr, assr, asnsr 넣어야 함 + videoChk ~로 구분
+			System.out.println("Predict = " + predString);
+			System.out.println(predString+", " + tasr + ", " + tassr + ", " + tasnsr + ", " + fanNum + ", " + videoChk);
 			/*double actualClass = testDataset.instance(i).classValue();
 			System.out.println("actual class = " + actualClass);
 			String actual = testDataset.classAttribute().value((int) actualClass);
 			System.out.println("actual = " + actual);
 			Instance newInst = testDataset.instance(i);*/
 			
-			Instance newInst = testDataset.instance(2);
-			double actualClass = testDataset.instance(2).classValue();
 			/*System.out.println("actual class = " + actualClass);
 			String actual = testDataset.classAttribute().value((int) actualClass);
 			System.out.println("actual = " + actual);*/
-			newInst.setValue(0,asr);
-			newInst.setValue(1,assr);
-			newInst.setValue(2,asnsr);
-			newInst.setValue(3,can);
-			newInst.setValue(4,dviCCo);
-//				newInst.setValue(0, 0.0d); 기존 Instance로 세팅하고, setValue를 통해 newInstance로 바꿔준다 + for문 안써도 돼
-			System.out.println("newInst = " + newInst);
-			double predNB;
-			if(algorithm.equals("OneR")) {
-				predNB = musicOneR.classifyInstance(newInst);
-				predString = testDataset.classAttribute().value((int) predNB);
-				SendData.getSendData().Send(predString + "~" + musicOneR + "~" + musicOneREval.toSummaryString() + "~");
-			}
-			else if(algorithm.equals("NaiveBayesian")) {
-				predNB = musicNaiveBayes.classifyInstance(newInst);
-				predString = testDataset.classAttribute().value((int) predNB);
-				SendData.getSendData().Send(predString + "~" + musicNaiveBayes + "~" + musicNaiveEval.toSummaryString() + "~");
-			}
-			else {
-				predNB = musicTree.classifyInstance(newInst);
-				predString = testDataset.classAttribute().value((int) predNB);
-				SendData.getSendData().Send(predString + "~" + musicTree + "~" + musicTreeEval.toSummaryString() + "~");
-			}
-			System.out.println("Predict = " + predString);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 	}
 

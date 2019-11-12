@@ -39,8 +39,8 @@ public class ReceiveThread extends Thread{
 						System.out.print(tokens[i] + " ");
 					}
 					System.out.println();
-					MusicModel.getMusicModel().Test(tokens[0],Double.parseDouble(tokens[1]), Double.parseDouble(tokens[2]), 
-							Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4]), tokens[5]);
+					//								알고리즘	  ArtistN    SongN       FanNum                       Video
+					MusicModel.getMusicModel().Test(tokens[0],tokens[1], tokens[2],	Double.parseDouble(tokens[3]),tokens[4]);
 				}
 			}
 		}
