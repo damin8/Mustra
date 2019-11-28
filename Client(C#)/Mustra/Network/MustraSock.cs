@@ -46,8 +46,8 @@ namespace Mustra.ViewModel
             {
                 client = new Socket(AddressFamily.InterNetwork,
                     SocketType.Stream, ProtocolType.IP);
-
-                string address = "203.229.204.172";
+                string address = "52.231.154.88";
+                //string address = "10.2.2.73";
                 //string address = "203.229.204.173";
                 //string address = "172.30.1.32";
                 //string address = "10.2.0.191";
