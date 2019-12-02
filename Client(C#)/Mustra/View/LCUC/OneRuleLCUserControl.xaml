@@ -26,7 +26,7 @@
             </StackPanel>
             <StackPanel Height="316" Margin="0,0,10,0">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="/Mustra;component/Resources/OneLC.png"/>
+                    <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/OneLC.png"/>
                 </StackPanel.Background>
             </StackPanel>
         </StackPanel>

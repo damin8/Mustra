@@ -17,7 +17,7 @@
                         <StackPanel Height="34" Width="45">
                             <Border Height="34" Margin="0,2,5,0">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="/Mustra;component/Resources/serach.png" Stretch="Uniform"/>
+                                    <ImageBrush RenderOptions.BitmapScalingMode="HighQuality"  ImageSource="/Mustra;component/Resources/serach.png" Stretch="Uniform"/>
                                 </Border.Background>
                                 <TextBlock Text="              "></TextBlock>
                             </Border>
@@ -27,7 +27,7 @@
             </StackPanel>
             <StackPanel Height="310" Margin="0,0,10,0">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="/Mustra;component/Resources/totalLC.png"/>
+                    <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/totalLC.png"/>
                 </StackPanel.Background>
             </StackPanel>
         </StackPanel>

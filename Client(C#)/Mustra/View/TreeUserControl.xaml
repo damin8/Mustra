@@ -27,7 +27,7 @@
             </StackPanel>
             <StackPanel Width="562" Height="415" Margin="0,0,1,0">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="/Mustra;component/Resources/tree.JPG"/>
+                    <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/tree.JPG"/>
                 </StackPanel.Background>
             </StackPanel>
         </StackPanel>

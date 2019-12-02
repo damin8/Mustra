@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <Border Name="border" Grid.RowSpan="2">
-            <Image Name="image" Source="/Mustra;component/Resources/totalLC.png" Opacity="1" RenderTransformOrigin="0.5,0.5"  />
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Name="image" Source="/Mustra;component/Resources/totalLC.png" Opacity="1" RenderTransformOrigin="0.5,0.5"  />
         </Border>
 
     </Grid>
