@@ -11,6 +11,6 @@ import SocketServer.*;
 public class MusicPredic {
 
 	public static void main(String[] args) {
-			Server sv = new Server();
+		Server sv = new Server();
 	}
 }

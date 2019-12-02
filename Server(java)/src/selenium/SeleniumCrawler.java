@@ -48,7 +48,7 @@ public class SeleniumCrawler {
 		WebElement searchBar = driver.findElement(By.name("q"));
 
 		searchBar.clear();
-		searchBar.sendKeys("���� " + singerName);
+		searchBar.sendKeys("가수 " + singerName);
 		searchBar.submit();
 		
 		try {
@@ -68,7 +68,7 @@ public class SeleniumCrawler {
 		
 		searchBar = driver.findElement(By.name("q"));
 		searchBar.clear();
-		searchBar.sendKeys("���� " + singerName + " " + songName);
+		searchBar.sendKeys("가수 " + singerName + " " + songName);
 		searchBar.submit();
 		
 		try {

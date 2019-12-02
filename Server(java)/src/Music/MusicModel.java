@@ -29,13 +29,9 @@ public class MusicModel {
 
 	private MusicModel() {
 		try {
-			// this.musicSource = new
-			// DataSource("C:\\Users\\damin\\eclipse-workspace\\WekaTest\\bin\\music.arff");
-			this.musicSource = new
-			DataSource("MusicPredict.arff");
+			this.musicSource = new DataSource("MusicPredict.arff");
 			this.musicInstance = this.musicSource.getDataSet();
 			this.musicInstance.setClassIndex(musicInstance.numAttributes() - 1);
-			//tenInstance[count] = new weka.core.Instances(musicInstance,0,i-1);
 			this.musicOneR = new OneR();
 			this.musicNaiveBayes = new NaiveBayes();
 			this.musicTree = new J48();
@@ -54,7 +50,7 @@ public class MusicModel {
 			// Music J48 Cross-Validation
 			this.musicTreeEval = new Evaluation(musicInstance);
 			this.musicTreeEval.crossValidateModel(musicTree, musicInstance, 10, new Random(1));
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -66,20 +62,19 @@ public class MusicModel {
 		return WM;
 	}
 
-	public void Test(String algorithm,String artN, String songN, double fanNum, String videoChk) {
+	public void Test(String algorithm, String artN, String songN, double fanNum, String videoChk) {
 		Instances testDataset;
 		try {
 			testDataset = musicSource.getDataSet();
 			testDataset.setClassIndex(testDataset.numAttributes() - 1);
 			double VideoChk;
-			if(videoChk.equals("no")) { // arff파일에 no가 첫 번째
+			if (videoChk.equals("no")) { // arff파일에 no가 첫 번째
 				VideoChk = 0.0;
-			}
-			else {
+			} else {
 				VideoChk = 1.0;
 			}
 			SeleniumCrawler selTest = new SeleniumCrawler();
-			ArrayList<String> testArray = selTest.getSearchResult(artN,songN);
+			ArrayList<String> testArray = selTest.getSearchResult(artN, songN);
 			Instance newInst = testDataset.instance(2);
 			String tasr = testArray.get(0);
 			String tassr = testArray.get(1);
@@ -89,40 +84,55 @@ public class MusicModel {
 			double asnsr = Double.parseDouble(tasnsr);
 			newInst.setValue(0, asr);
 			newInst.setValue(1, assr);
-			newInst.setValue(2,asnsr); 
-			newInst.setValue(3,fanNum);
-			newInst.setValue(4,VideoChk);
-			
+			newInst.setValue(2, asnsr);
+			newInst.setValue(3, fanNum);
+			newInst.setValue(4, VideoChk);
+
 			double predNB;
-			if(algorithm.equals("OneR")) {
+			if (algorithm.equals("OneR")) {
 				predNB = musicOneR.classifyInstance(newInst);
 				predString = testDataset.classAttribute().value((int) predNB);
-			}
-			else if(algorithm.equals("NaiveBayesian")) {
+			} else if (algorithm.equals("NaiveBayesian")) {
 				predNB = musicNaiveBayes.classifyInstance(newInst);
 				predString = testDataset.classAttribute().value((int) predNB);
-			}
-			else {
+			} else {
 				predNB = musicTree.classifyInstance(newInst);
 				predString = testDataset.classAttribute().value((int) predNB);
 			}
-			SendData.getSendData().Send(predString+"~"+tasr+"~"+tassr+"~"+tasnsr+"~"+fanNum+"~"+videoChk+"~"); // 웹에서 따온 asr, assr, asnsr 넣어야 함 + videoChk ~로 구분
+			int tfanNum = (int) fanNum;
+			SendData.getSendData()
+					.Send(predString + "~" + tasr + "~" + tassr + "~" + tasnsr + "~" + tfanNum + "~" + videoChk + "~"); // 웹에서
+																														// 따온
+																														// asr,
+																														// assr,
+																														// asnsr
+																														// 넣어야
+																														// 함
+																														// +
+																														// videoChk
+																														// ~로
+																														// 구분
 			System.out.println("Predict = " + predString);
-			System.out.println(predString+", " + tasr + ", " + tassr + ", " + tasnsr + ", " + fanNum + ", " + videoChk);
-			/*double actualClass = testDataset.instance(i).classValue();
-			System.out.println("actual class = " + actualClass);
-			String actual = testDataset.classAttribute().value((int) actualClass);
-			System.out.println("actual = " + actual);
-			Instance newInst = testDataset.instance(i);*/
-			
-			/*System.out.println("actual class = " + actualClass);
-			String actual = testDataset.classAttribute().value((int) actualClass);
-			System.out.println("actual = " + actual);*/
+			System.out.println(
+					predString + ", " + tasr + ", " + tassr + ", " + tasnsr + ", " + tfanNum + ", " + videoChk);
+			/*
+			 * double actualClass = testDataset.instance(i).classValue();
+			 * System.out.println("actual class = " + actualClass); String actual =
+			 * testDataset.classAttribute().value((int) actualClass);
+			 * System.out.println("actual = " + actual); Instance newInst =
+			 * testDataset.instance(i);
+			 */
+
+			/*
+			 * System.out.println("actual class = " + actualClass); String actual =
+			 * testDataset.classAttribute().value((int) actualClass);
+			 * System.out.println("actual = " + actual);
+			 */
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
 	}
 

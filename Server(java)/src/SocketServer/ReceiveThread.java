@@ -20,7 +20,7 @@ public class ReceiveThread extends Thread{
 	public void run() {
 		try {
 			BufferedReader tmpbuf = new BufferedReader
-					(new InputStreamReader(receiveSocket.getInputStream()));
+					(new InputStreamReader(receiveSocket.getInputStream(),"UTF8"));
 			String receiveString;
 			while(true) {
 				receiveString = tmpbuf.readLine();
