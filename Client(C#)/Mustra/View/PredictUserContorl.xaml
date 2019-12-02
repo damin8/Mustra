@@ -31,7 +31,7 @@
                 <StackPanel Height="407" Orientation="Horizontal">
                     <Border Margin="13,12,0,22" Width="298" Background="White">
                         <Border.Effect>
-                            <DropShadowEffect Color="#FFE2D8D8"></DropShadowEffect>
+                            <DropShadowEffect ShadowDepth="0" Color="gray"></DropShadowEffect>
                         </Border.Effect>
                         <StackPanel>
                             <StackPanel Height="30" Background="#FF3778D6">
@@ -45,7 +45,7 @@
 												>
                                     <StackPanel Width="40" Height="40" Margin="12,0,0,0">
                                         <StackPanel.Background>
-                                            <ImageBrush ImageSource="/Mustra;component/Resources/google.png" Stretch="Uniform"/>
+                                            <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/google.png" Stretch="Uniform"/>
                                         </StackPanel.Background>
 
                                     </StackPanel>
@@ -67,7 +67,7 @@
 												>
                                     <StackPanel Width="40" Height="40" Margin="12,0,0,0">
                                         <StackPanel.Background>
-                                            <ImageBrush ImageSource="/Mustra;component/Resources/music.png" Stretch="Uniform"/>
+                                            <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/music.png" Stretch="Uniform"/>
                                         </StackPanel.Background>
 
                                     </StackPanel>
@@ -89,7 +89,7 @@
 												>
                                     <StackPanel Width="40" Height="40" Margin="12,0,0,0">
                                         <StackPanel.Background>
-                                            <ImageBrush ImageSource="/Mustra;component/Resources/news.png" Stretch="Uniform"/>
+                                            <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/news.png" Stretch="Uniform"/>
                                         </StackPanel.Background>
 
                                     </StackPanel>
@@ -111,7 +111,7 @@
 												>
                                     <StackPanel Width="40" Height="40" Margin="12,0,0,0">
                                         <StackPanel.Background>
-                                            <ImageBrush ImageSource="/Mustra;component/Resources/fan.png" Stretch="Uniform"/>
+                                            <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/fan.png" Stretch="Uniform"/>
                                         </StackPanel.Background>
 
                                     </StackPanel>
@@ -133,7 +133,7 @@
 												>
                                     <StackPanel Width="40" Height="40" Margin="12,0,0,0">
                                         <StackPanel.Background>
-                                            <ImageBrush ImageSource="/Mustra;component/Resources/moive.png" Stretch="Uniform"/>
+                                            <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/moive.png" Stretch="Uniform"/>
                                         </StackPanel.Background>
 
                                     </StackPanel>
@@ -155,7 +155,7 @@
 												>
                                     <StackPanel Width="40" Height="40" Margin="12,0,0,0">
                                         <StackPanel.Background>
-                                            <ImageBrush ImageSource="/Mustra;component/Resources/rule.png" Stretch="Uniform"/>
+                                            <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/rule.png" Stretch="Uniform"/>
                                         </StackPanel.Background>
 
                                     </StackPanel>
@@ -175,7 +175,7 @@
                     <StackPanel Width="253" Orientation="Vertical">
                         <Border Margin="14,12,12,0" Height="70" Background="White">
                             <Border.Effect>
-                                <DropShadowEffect Color="#FFE4E0E0"></DropShadowEffect>
+                                <DropShadowEffect Color="Gray" ShadowDepth="0"></DropShadowEffect>
                             </Border.Effect>
                             <StackPanel>
                                 <StackPanel Background="#FF3B76CA" Height="30">
@@ -272,7 +272,7 @@
                         </Border>
                         <Border Margin="14,12,12,0" Height="291" Background="White">
                             <Border.Effect>
-                                <DropShadowEffect Color="#FFE4E0E0"></DropShadowEffect>
+                                <DropShadowEffect ShadowDepth="0" Color="gray"></DropShadowEffect>
                             </Border.Effect>
                             <StackPanel>
                                 <StackPanel Background="#FF3B76CA" Height="30">
@@ -293,7 +293,7 @@
                                             <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
                                                 <StackPanel Width="24">
                                                     <StackPanel.Background>
-                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                        <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
                                                     </StackPanel.Background>
 
                                                 </StackPanel>
@@ -319,7 +319,7 @@
                                             <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
                                                 <StackPanel Width="24">
                                                     <StackPanel.Background>
-                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                        <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
                                                     </StackPanel.Background>
 
                                                 </StackPanel>
@@ -345,7 +345,7 @@
                                             <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
                                                 <StackPanel Width="24">
                                                     <StackPanel.Background>
-                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                        <ImageBrush   RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
                                                     </StackPanel.Background>
 
                                                 </StackPanel>
@@ -371,7 +371,7 @@
                                             <StackPanel Orientation="Horizontal" Height="23" Margin="0,4,10,7">
                                                 <StackPanel Width="24">
                                                     <StackPanel.Background>
-                                                        <ImageBrush ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
+                                                        <ImageBrush  RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/Mustra;component/Resources/like.png" Stretch="Uniform"/>
                                                     </StackPanel.Background>
 
                                                 </StackPanel>
