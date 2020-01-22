@@ -14,19 +14,21 @@ Java, C#, Python 사용
 
 1. SingerName
 
--> 가수의 이름
+- 가수의 이름
 
 2. SongName
 
--> 노래 제목
+- 노래 제목
 
 3. FanNum
 
--> 멜론 팬 수
+- 멜론 팬 수
 
 4. Video
 
--> 뮤직 비디오 유,무
+- 뮤직 비디오 유,무
+
+---
 
 SingerName과 SongName 을 Input 으로 받은 후에,
 
