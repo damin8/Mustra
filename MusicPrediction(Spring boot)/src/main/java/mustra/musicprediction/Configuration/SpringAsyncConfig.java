@@ -16,7 +16,7 @@ public class SpringAsyncConfig {
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
         taskExecutor.setMaxPoolSize(100); // 큐카파 넘어가면 스레드 축 생성
         taskExecutor.setQueueCapacity(30); // 스레드 대기 큐
-        taskExecutor.setThreadNamePrefix("findAllFeedThread");
+        taskExecutor.setThreadNamePrefix("findAllFeedThread-");
         taskExecutor.initialize();
         return taskExecutor;
     }
@@ -28,7 +28,7 @@ public class SpringAsyncConfig {
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
         taskExecutor.setMaxPoolSize(100); // 큐카파 넘어가면 스레드 축 생성
         taskExecutor.setQueueCapacity(30); // 스레드 대기 큐
-        taskExecutor.setThreadNamePrefix("createFeedThread");
+        taskExecutor.setThreadNamePrefix("createFeedThread-");
         taskExecutor.initialize();
         return taskExecutor;
     }
@@ -39,7 +39,7 @@ public class SpringAsyncConfig {
         taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
         taskExecutor.setMaxPoolSize(100); // 큐카파 넘어가면 스레드 축 생성
         taskExecutor.setQueueCapacity(30); // 스레드 대기 큐
-        taskExecutor.setThreadNamePrefix("findRankThread");
+        taskExecutor.setThreadNamePrefix("findRankThread-");
         taskExecutor.initialize();
         return taskExecutor;
     }

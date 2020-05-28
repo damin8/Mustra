@@ -3,21 +3,20 @@ package mustra.musicprediction.Controller;
 import com.google.gson.Gson;
 import mustra.musicprediction.Model.Feed;
 import mustra.musicprediction.Model.Music;
+import mustra.musicprediction.Module.DataMining;
 import mustra.musicprediction.Module.Sequence;
 import mustra.musicprediction.Repository.FeedRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/mustra/*")
 @WebServlet(asyncSupported = true)
@@ -29,6 +28,8 @@ public class MustraController {
     private FeedRepository feedRepository;
     @Autowired
     private Sequence sequence;
+    @Autowired
+    private DataMining dataMining;
 
     @RequestMapping(value="/",method = RequestMethod.GET)
     public String home() {
@@ -44,13 +45,17 @@ public class MustraController {
 
     @Async(value="findRankThread")
     @RequestMapping(value = "/find/rank")
-    public String findRank(@RequestBody Music music){
-        return "HI";
+    public CompletableFuture<String> findRank(@RequestBody Music music){
+        String rank = dataMining.executeAlgorithm(music);
+        //Feed feed = new Feed(0,rank,)
+        return CompletableFuture.completedFuture(rank);
     }
 
     @Async(value="createFeedThread")
     @RequestMapping(value = "/feed/create", method = RequestMethod.POST)
     public CompletableFuture<String> createFeed(@RequestBody Feed feed){
+        int _id = sequence.makeSequence("feeds");
+        feed.set_id(_id);
         Feed temp = feedRepository.insert(feed);
         Gson gson = new Gson();
         String json = gson.toJson(temp);

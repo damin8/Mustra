@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Sequence {
+
     @Autowired
     private SequenceIDRepository sequenceIDRepository;
+
     public int makeSequence(String collectionName){
         if (sequenceIDRepository.countBy_id(collectionName) == 0) {
             SequenceID sequenceID = new SequenceID(collectionName, 0);
