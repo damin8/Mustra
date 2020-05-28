@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.0'

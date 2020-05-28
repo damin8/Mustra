@@ -9,6 +9,8 @@ import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 
+import java.util.ArrayList;
+
 @Component
 public class DataMining {
 
@@ -37,23 +39,44 @@ public class DataMining {
     public String executeAlgorithm(Music music){
 
         String predString = null;
+
         String artistName = music.getArtistName();
         String songName = music.getSongName();
 
-        //SeleniumCrawler selTest = new SeleniumCrawler();
-        //ArrayList<String> resultArray = selTest.getSearchResult(artistName, songName);
+        String videoCheck = music.getVideo();
+        double video = 0.0;
+        if (videoCheck.equals("No")) { // arff파일에 no가 첫 번째
+            video = 0.0;
+        } else {
+            video = 1.0;
+        }
 
-        //String artistFindCount = resultArray.get(0);
-        //String artistSongFindCount = resultArray.get(1);
-        //String artistSongNewsFindCount = resultArray.get(2);
+        SeleniumCrawler selTest = new SeleniumCrawler();
+        ArrayList<String> resultArray = selTest.getSearchResult(artistName, songName);
 
-        //newInst.setValue(0,artistFindCount);
-        //newInst.setValue(1,artistSongFindCount);
-        //newInst.setValue(2,artistSongNewsFindCount);
-        //newInst.setValue(3,music.getFanNum());
-        //newInst.setValue(4,music.getVideo());
+        String artistFindCount = resultArray.get(0);
+        String artistSongFindCount = resultArray.get(1);
+        String artistSongNewsFindCount = resultArray.get(2);
 
-        //logger.info("newInstance = " + newInst.toString());
+        double asr = Double.parseDouble(artistFindCount);
+        double assr = Double.parseDouble(artistSongFindCount);
+        double asnsr = Double.parseDouble(artistSongNewsFindCount);
+
+        String tempFanNum = music.getFanNum();
+
+        if(tempFanNum.equals("?"))
+            newInst.isMissing(3);
+        else
+            newInst.setValue(3,Double.parseDouble(tempFanNum));
+
+        newInst.setValue(0,asr);
+        newInst.setValue(1,assr);
+        newInst.setValue(2,asnsr);
+        newInst.setValue(4,video);
+
+
+        logger.info("newInstance = " + newInst.toString());
+
 
         try{
             double predNB = 0;

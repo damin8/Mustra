@@ -43,7 +43,7 @@ public class MustraController {
     }
 
     @Async(value="findRankThread")
-    @RequestMapping(value = "/find/rank")
+    @RequestMapping(value = "/find/rank", method = RequestMethod.POST)
     public CompletableFuture<String> findRank(@RequestBody Music music){
         String rank = dataMining.executeAlgorithm(music);
         String artistName = music.getArtistName();
