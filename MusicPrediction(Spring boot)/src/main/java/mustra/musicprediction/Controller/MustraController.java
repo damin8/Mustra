@@ -35,7 +35,7 @@ public class MustraController {
     public String home() {
         Music music = new Music("가수 이름","노래 제목"
                 ,"팬의 수","비디오");
-        Feed feed = new Feed(1,"Rank","가수 이름","노래 이름","코멘트(익명)");
+        Feed feed = new Feed(1,"Rank","가수 이름","노래 이름","코멘트(익명)","시간");
 
         String str = "Music Model = " + music.toString();
         str+="\"\n\n\n\n\n\n\n\n\" Feed Model = " + feed.toString();
@@ -48,8 +48,7 @@ public class MustraController {
         String rank = dataMining.executeAlgorithm(music);
         String artistName = music.getArtistName();
         String songName = music.getSongName();
-        int _id = sequence.makeSequence("feeds");
-        Feed feed = new Feed(_id,rank,artistName,songName,null);
+        Feed feed = new Feed(-1,rank,artistName,songName,null,null);
         Gson gson = new Gson();
         String json = gson.toJson(feed);
         logger.info("=====findRank=====");

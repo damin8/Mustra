@@ -19,4 +19,5 @@ public class Feed {
     private String artistName;
     private String songName;
     private String comment;
+    private String date;
 }

@@ -7,13 +7,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SeleniumCrawler {
 
     private WebDriver driver;
 
     public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-    public static final String WEB_DRIVER_PATH = "C:\\Selenium\\selenium-java-3.141.59\\chromedriver.exe";
+    public static final String WEB_DRIVER_PATH = "/usr/bin/chromedriver";
+    //public static final String WEB_DRIVER_PATH = "C:\\Selenium\\selenium-java-3.141.59\\chromedriver.exe";
 
     private String base_url;
 
@@ -23,24 +26,13 @@ public class SeleniumCrawler {
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
         base_url = "http://www.google.com";
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-infobars");
+        options.addArguments("--disable-infobars");
         options.addArguments("--incognito");
-        options.addArguments("headless");
+        options.addArguments("--headless");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--allow-insecure-localhost");
         driver = new ChromeDriver(options); // Driver 생성
-    }
-
-    public void crawlTest() {
-        try {
-            driver.get(base_url);
-            System.out.println(driver.getPageSource());
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            driver.close();
-        }
     }
 
     public ArrayList<String> getSearchResult(String singerName, String songName) {
