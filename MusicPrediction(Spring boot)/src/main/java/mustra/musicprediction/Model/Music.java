@@ -8,10 +8,8 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class Music {
-    private String algorithm;
-    private String artistFindCount;
-    private String artistSongFindCount;
-    private String artistSongNewsCount;
-    private int fanNum;
-    private boolean video;
+    private String artistName;
+    private String songName;
+    private String fanNum;
+    private String video;
 }
