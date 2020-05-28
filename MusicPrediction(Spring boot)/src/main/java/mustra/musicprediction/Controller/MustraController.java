@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.WebServlet;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @CrossOrigin("*")
@@ -35,7 +36,7 @@ public class MustraController {
     public String home() {
         Music music = new Music("가수 이름","노래 제목"
                 ,"팬의 수","비디오");
-        Feed feed = new Feed(1,"Rank","가수 이름","노래 이름","코멘트(익명)","시간");
+        Feed feed = new Feed(1,"Rank","가수 이름","노래 이름","코멘트(익명)","시간",0);
 
         String str = "Music Model = " + music.toString();
         str+="\"\n\n\n\n\n\n\n\n\" Feed Model = " + feed.toString();
@@ -48,7 +49,7 @@ public class MustraController {
         String rank = dataMining.executeAlgorithm(music);
         String artistName = music.getArtistName();
         String songName = music.getSongName();
-        Feed feed = new Feed(-1,rank,artistName,songName,null,null);
+        Feed feed = new Feed(-1,rank,artistName,songName,null,null,0);
         Gson gson = new Gson();
         String json = gson.toJson(feed);
         logger.info("=====findRank=====");
@@ -79,6 +80,25 @@ public class MustraController {
         String json = gson.toJson(feedList);
         logger.info("=====findAllFeed=====");
         logger.info("Response = " + json);
+        return CompletableFuture.completedFuture(json);
+    }
+
+    @Async(value="likeFeedCountThread")
+    @RequestMapping(value ="/feed/likeFeed", method = RequestMethod.POST)
+    public CompletableFuture<String> likeFeedCount(@RequestBody Map<String,String> map){
+        String _id = map.get("_id");
+        String isLike = map.get("isLike");
+
+        Feed temp = feedRepository.findFeedBy_id(_id);
+        if(isLike.equals("like"))
+            temp.setLikeCount(temp.getLikeCount() + 1);
+        else
+            temp.setLikeCount(temp.getLikeCount() - 1);
+        feedRepository.save(temp);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(temp);
+
         return CompletableFuture.completedFuture(json);
     }
 }

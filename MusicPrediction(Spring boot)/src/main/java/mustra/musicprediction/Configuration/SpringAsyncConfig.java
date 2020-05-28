@@ -10,6 +10,18 @@ import java.util.concurrent.Executor;
 @Configuration
 @EnableAsync
 public class SpringAsyncConfig {
+
+    @Bean(name = "likeFeedCountThread")
+    public Executor likeFeedCountThread() {
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(5); // 기본 스레드 개수
+        taskExecutor.setMaxPoolSize(100); // 큐카파 넘어가면 스레드 축 생성
+        taskExecutor.setQueueCapacity(30); // 스레드 대기 큐
+        taskExecutor.setThreadNamePrefix("likeFeedCountThread-");
+        taskExecutor.initialize();
+        return taskExecutor;
+    }
+
     @Bean(name = "findAllFeedThread")
     public Executor findAllFeedThread() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
@@ -20,7 +32,6 @@ public class SpringAsyncConfig {
         taskExecutor.initialize();
         return taskExecutor;
     }
-
 
     @Bean(name = "createFeedThread")
     public Executor createFeedThread() {

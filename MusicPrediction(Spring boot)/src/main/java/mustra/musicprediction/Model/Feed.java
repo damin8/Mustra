@@ -20,4 +20,6 @@ public class Feed {
     private String songName;
     private String comment;
     private String date;
+    @Setter
+    private int likeCount = 0;
 }
